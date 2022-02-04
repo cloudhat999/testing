@@ -6,6 +6,6 @@
     - command: df -h
       register: diskinfo
     - name: list upgradeble
-      yum: list=updates update_cache=true
+      shell: dnf check-update
       register: pkginfo
     - command: echo " "{{ diskinfo }}" "{{ pkginfo }}" " | mail -s servinfo info@email.com
