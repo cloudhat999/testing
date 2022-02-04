@@ -6,6 +6,6 @@
     - command: df -h
       register: diskinfo
     - name: list upgradeble
-      shell: dnf check-update
+      shell: dnf check-update  | awk '(NR >=4) {print $1;}' | uniq 
       register: pkginfo
     - command: echo " "{{ diskinfo }}" "{{ pkginfo }}" " | mail -s servinfo info@email.com
