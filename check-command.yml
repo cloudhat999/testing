@@ -10,4 +10,4 @@
       args:
         warn: false
       register: pkginfo
-    - command: echo " "{{ diskinfo }}" "{{ pkginfo }}" " | mail -s servinfo testing@cloudhat.com
+    - command: echo " "{{ diskinfo.stdout_lines }}" "{{ pkginfo.stdout_lines }}" " | mail -s servinfo testing@cloudhat.com
