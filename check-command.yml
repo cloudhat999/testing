@@ -5,6 +5,7 @@
   tasks:
     - command: df -h
       register: diskinfo
-    - command: yum check-update
+    - name: list upgradeble
+      yum: list=updates update_cache=true
       register: pkginfo
     - command: echo " "{{ diskinfo }}" "{{ pkginfo }}" " | mail -s servinfo info@email.com
