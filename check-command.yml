@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  gather_facts: false
+  tasks:
+    - command: df -h
+      register: diskinfo
+    - command: yum check-update
+      register: pkginfo
+    - command: echo " "{{ diskinfo }}" "{{ pkginfo }}" " | mail -s servinfo info@email.com
