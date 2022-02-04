@@ -3,6 +3,6 @@
 - hosts: all
   gather_facts: false
   tasks:
-    - yum:
+    - dnf:
         update: "*"
         state: latest
