@@ -4,6 +4,6 @@
   gather_facts: false
   become: yes
   tasks:
-    - yum:
+    - dnf:
         name: "*"
         state: latest
