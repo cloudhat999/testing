@@ -1,0 +1,24 @@
+---
+
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: 
+      azure_rm_keyvault:
+        resource_group: NewRG3
+        vault_name: TheVault9
+        enabled_for_deployment: yes
+        vault_tenant: cea29a94-f2f0-44e4-ada2-f9ec7b985c4f
+        sku:
+          name: standard
+        access_policies:
+        - tenant_id: cea29a94-f2f0-44e4-ada2-f9ec7b985c4f
+          object_id: dedcaa3b-6087-4497-b64c-6504fe273210
+            keys:
+              - get
+              - list
+              - create
+            secrets:
+              - get
+              - list
+              - create
