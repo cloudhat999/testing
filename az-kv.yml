@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Create a secret
+      azure_rm_keyvaultsecret:
+        secret_name: MySecret
+        secret_value: My_Pass_Sec
+        keyvault_uri: https://contoso.vault.azure.net/
+        tags:
+          testing: testing
+          delete: never
