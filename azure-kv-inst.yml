@@ -2,8 +2,6 @@
 
 - hosts: all
   gather_facts: false
-  collections:
-    - name: azure.azcollection.azure_rm_keyvault
   tasks:
     - name: 
       azure_rm_keyvault:
