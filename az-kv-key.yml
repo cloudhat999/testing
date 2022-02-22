@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Create a key
+      azure_rm_keyvaultkey:
+        key_name: MyKey
+        keyvault_uri: https://thevault9.vault.azure.net/
