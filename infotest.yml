@@ -2,6 +2,7 @@
 
 - hosts: all
   gather_facts: true
+  serial: 1
 #  become: true
   collections:
   - community.general
@@ -11,6 +12,8 @@
     - name: disk free command and output
       shell: df -h
       register: diskfree
+    - debug:
+        var: diskfree.stdout
     - name: copy from var to file for diskfree
       local_action: copy content={{ diskfree.stdout }} dest=/tmp/ansible-diskfree-results.txt
       delegate_to: localhost
