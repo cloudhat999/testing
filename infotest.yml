@@ -11,6 +11,10 @@
     - name: disk free command and output
       command: df -h
       register: diskfree
-    - name: copy from var to file for diskfree
-      local_action: copy content="{{ diskfree.stdout }}" dest="/opt/ansible-diskfree-results.txt"
+#    - name: copy from var to file for diskfree
+#      local_action: copy content="{{ diskfree.stdout }}" dest="/opt/ansible-diskfree-results.txt"
+    - name: Write linked_dirs file
+      copy:
+        content: '{{ diskfree.stdout("\n") }}'
+        dest: /tmp/test
       delegate_to: localhost
