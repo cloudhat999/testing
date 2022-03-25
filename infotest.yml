@@ -2,7 +2,6 @@
 
 - hosts: all
   gather_facts: true
-  serial: 1
 #  become: true
   collections:
   - community.general
@@ -10,10 +9,14 @@
 #    - name: include secret vars file
 #      include_vars: /etc/ansible/roles/mails.yml
     - name: disk free command and output
-      shell: df -h
+      command: df -h
       register: diskfree
-    - debug:
-        var: diskfree.stdout
+    - name: pre patch info into var
+      yum:
+        list: "updates"
+      become_user: root
+      register: pkginfo
     - name: copy from var to file for diskfree
-      local_action: copy content={{ diskfree.stdout }} dest=/opt/ansible-diskfree.txt
-      delegate_to: localhost
+      local_action: copy content={{ diskfree.stdout }} dest=/tmp/ansible-diskfree-results.txt
+    - name: copy from var to file for pkgs
+      local_action: copy content="{{ pkginfo.results | map(attribute='name') | list }}" dest=/tmp/ansible-pkg-results.txt
