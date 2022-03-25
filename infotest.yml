@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  gather_facts: true
+#  become: true
+  collections:
+  - community.general
+  tasks:
+#    - name: include secret vars file
+#      include_vars: /etc/ansible/roles/mails.yml
+    - name: disk free command and output
+      command: df -h
+      register: diskfree
+    - name: copy from var to file for diskfree
+      local_action: copy content={{ diskfree.stdout }} dest=/tmp/ansible-diskfree-results.txt
