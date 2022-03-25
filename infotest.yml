@@ -13,3 +13,4 @@
       register: diskfree
     - name: copy from var to file for diskfree
       local_action: copy content={{ diskfree.stdout }} dest=/tmp/ansible-diskfree-results.txt
+      delegate_to: localhost
