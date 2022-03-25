@@ -15,5 +15,5 @@
     - debug:
         var: diskfree.stdout
     - name: copy from var to file for diskfree
-      local_action: copy content={{ diskfree.stdout }} dest=/tmp/ansible-diskfree-results.txt
+      local_action: copy content={{ diskfree.stdout }} dest=/opt/ansible-diskfree.txt
       delegate_to: localhost
