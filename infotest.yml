@@ -15,7 +15,7 @@
 #      local_action: copy content="{{ diskfree.stdout }}" dest="/opt/ansible-diskfree-results.txt"
     - name: Write linked_dirs file
       copy:
-        content: '{{ diskinf.stdout }}'
+        content: '{{ diskinf }}'
         dest: /tmp/test.txt
       delegate_to: localhost
       run_once: true
