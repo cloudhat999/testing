@@ -15,11 +15,11 @@
 #    - name: copy from var to file for diskfree
 #      local_action: copy content="{{ diskfree.stdout }}" dest="/opt/ansible-diskfree-results.txt"
    handlers:
-    - name: Write
-      copy:
-        content: '{{ diskinf.stdout_lines }}'
-        dest: /tmp/test.txt
-      delegate_to: localhost
-      run_once: true
-    - debug:
-        var: '{{ diskinf.stdout_lines }}'
+     - name: Write
+       copy:
+         content: '{{ diskinf.stdout_lines }}'
+         dest: /tmp/test.txt
+       delegate_to: localhost
+       run_once: true
+     - debug:
+         var: '{{ diskinf.stdout_lines }}'
