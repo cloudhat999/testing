@@ -12,5 +12,5 @@
       command: df -h
       register: diskfree
     - name: copy from var to file for diskfree
-      local_action: copy content={{ diskfree.stdout }} dest=/opt/ansible-diskfree-results.txt
+      local_action: copy content={{ diskfree }} dest=/opt/ansible-diskfree-results.txt
       delegate_to: localhost
