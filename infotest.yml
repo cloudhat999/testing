@@ -18,3 +18,4 @@
         content: '{{ diskinf.stdout }}'
         dest: /tmp/test.txt
       delegate_to: localhost
+      run_once: true
