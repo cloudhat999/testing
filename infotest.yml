@@ -2,6 +2,7 @@
 
 - hosts: all
   gather_facts: true
+  serial: 1
 #  become: true
   collections:
   - community.general
