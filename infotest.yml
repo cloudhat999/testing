@@ -14,6 +14,7 @@
       notify: Write
 #    - name: copy from var to file for diskfree
 #      local_action: copy content="{{ diskfree.stdout }}" dest="/opt/ansible-diskfree-results.txt"
+   handlers:
     - name: Write
       copy:
         content: '{{ diskinf.stdout_lines }}'
