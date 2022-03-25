@@ -10,11 +10,11 @@
 #      include_vars: /etc/ansible/roles/mails.yml
     - name: disk free command and output
       command: df -h
-      register: diskfree
+      register: diskinf
 #    - name: copy from var to file for diskfree
 #      local_action: copy content="{{ diskfree.stdout }}" dest="/opt/ansible-diskfree-results.txt"
     - name: Write linked_dirs file
       copy:
-        content: '{{ diskfree.stdout }}'
-        dest: /tmp/test
+        content: '{{ diskinf.stdout }}'
+        dest: /tmp/test.txt
       delegate_to: localhost
